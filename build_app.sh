@@ -1,1 +1,1 @@
-docker build -t python-web-server-$1 .
+sudo docker build -t python-web-server-$1 .
