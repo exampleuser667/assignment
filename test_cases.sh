@@ -2,6 +2,7 @@ heading_expected=$1
 
 #Test Case 1: check if service is up
 test_case_1(){
+echo "test 1"
 test_status=0
 status=$(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:8000)
 if [ $status == '"200"' ]
@@ -16,6 +17,7 @@ return $test_status
 
 #Test Case 2: Check if heading is correct
 test_case_2(){
+echo "Test 2"
 test_status=0
 heading=$(curl -s http://localhost:8000/ | xargs | egrep -o '<h1>.*</h1>'|sed "s/<[^>]\+>//g")
 if [ $heading == $heading_expected ]
@@ -29,6 +31,7 @@ return $test_status
 
 #Test Case 3: Check count of failure
 test_case_3(){
+echo "Test 3"
 test_status=0
 failure_count=$(cat result.txt |grep Fail|wc -l)
 if [ $failure_count == 0 ]
